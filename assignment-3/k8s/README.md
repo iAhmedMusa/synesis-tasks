@@ -22,12 +22,12 @@ kubectl create namespace synesis
 5. Deploy Secrets, ConfigMap, Deployments, Services, etc:
 
 ```bash
-- kubectl apply -f secrets.yml
-- kubectl apply -f configmap.yml
-- kubectl apply -f postgres-pvc.yml
-- kubectl apply -f postgres.yml
-- kubectl apply -f backend-app.yml
-- kubectl apply -f frontend-app.yml
+kubectl apply -f secrets.yml
+kubectl apply -f configmap.yml
+kubectl apply -f postgres-pvc.yml
+kubectl apply -f postgres.yml
+kubectl apply -f backend-app.yml
+kubectl apply -f frontend-app.yml
 ```
 
 6. See all resources:
