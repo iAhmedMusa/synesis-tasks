@@ -1,0 +1,20 @@
+## VM IP:
+
+http://35.213.135.114/
+
+---
+
+This comprehensive full-stack application provides the capability to perform CRUD operations
+
+Sign-In -> Register
+Or
+Register as Doctor/Pharmacist
+
+To update registered information go to profile
+
+To access Admin
+
+Sign-In ->
+
+email: 4udoctors@admin.com,
+password: 1234567890
