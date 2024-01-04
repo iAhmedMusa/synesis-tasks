@@ -1,0 +1,67 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: synesis
+  name: backend-app
+  labels:
+    app: backend-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend-app
+  template:
+    metadata:
+      labels:
+        app: backend-app
+    spec:
+      containers:
+        - name: backend-app
+          image: ahmedmusa007/backend:latest
+          resources:
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+          ports:
+            - containerPort: 4000
+          env:
+            - name: PG_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: synesis-configmap
+                  key: DATABASE_HOST
+            - name: PG_PORT
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-secrets
+                  key: postgres-port
+            - name: PG_USER
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-secrets
+                  key: postgres-user
+            - name: PG_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-secrets
+                  key: postgres-password
+            - name: PG_DB
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-secrets
+                  key: postgres-db
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: synesis
+  name: backend-app-service
+spec:
+  selector:
+    app: backend-app
+  type: LoadBalancer
+  ports:
+    - protocol: TCP
+      port: 4000
+      targetPort: 4000

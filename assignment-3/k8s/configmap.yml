@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: synesis-configmap
+  namespace: synesis
+data:
+  DATABASE_HOST: postgres-service
+  BASE_API: backend-app-service
